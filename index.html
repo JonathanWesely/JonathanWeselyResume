@@ -18,6 +18,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#tictactoe">Game</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button id="theme-toggle" aria-label="Toggle theme">
@@ -254,6 +255,45 @@
             </div>
           </article>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- TIC TAC TOE -->
+    <section id="tictactoe">
+      <div class="section-container">
+        <h2 class="section-title">Play a Game</h2>
+        <p class="ttt-sub">Take a break — challenge a friend to Tic Tac Toe while you're here.</p>
+        <div class="ttt-wrapper">
+          <div class="ttt-scoreboard">
+            <div class="ttt-score-card">
+              <span class="ttt-score-label">X</span>
+              <span class="ttt-score-val" id="score-x">0</span>
+            </div>
+            <div class="ttt-score-card ttt-score-draw">
+              <span class="ttt-score-label">Draw</span>
+              <span class="ttt-score-val" id="score-draw">0</span>
+            </div>
+            <div class="ttt-score-card">
+              <span class="ttt-score-label">O</span>
+              <span class="ttt-score-val" id="score-o">0</span>
+            </div>
+          </div>
+          <div class="ttt-status" id="ttt-status">Player X's turn</div>
+          <div class="ttt-board" id="ttt-board">
+            <button class="ttt-cell" data-index="0" aria-label="Cell 1"></button>
+            <button class="ttt-cell" data-index="1" aria-label="Cell 2"></button>
+            <button class="ttt-cell" data-index="2" aria-label="Cell 3"></button>
+            <button class="ttt-cell" data-index="3" aria-label="Cell 4"></button>
+            <button class="ttt-cell" data-index="4" aria-label="Cell 5"></button>
+            <button class="ttt-cell" data-index="5" aria-label="Cell 6"></button>
+            <button class="ttt-cell" data-index="6" aria-label="Cell 7"></button>
+            <button class="ttt-cell" data-index="7" aria-label="Cell 8"></button>
+            <button class="ttt-cell" data-index="8" aria-label="Cell 9"></button>
+          </div>
+          <button class="btn btn-outline ttt-reset-btn" id="ttt-reset">
+            <i class="fa-solid fa-rotate-right"></i> New Game
+          </button>
         </div>
       </div>
     </section>

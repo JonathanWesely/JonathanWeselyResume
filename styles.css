@@ -483,6 +483,112 @@ section { padding: 100px 0; }
   font-weight: 600;
 }
 
+/* ===== TIC TAC TOE ===== */
+#tictactoe { background: var(--bg-card); }
+
+.ttt-sub {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.ttt-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ttt-scoreboard {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.ttt-score-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: .8rem 2rem;
+  text-align: center;
+  min-width: 90px;
+  transition: border-color var(--transition);
+}
+.ttt-score-card.active { border-color: var(--accent); }
+
+.ttt-score-label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .2rem;
+}
+
+.ttt-score-val {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent2);
+}
+
+.ttt-score-draw .ttt-score-val { color: var(--text-muted); }
+
+.ttt-status {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  min-height: 1.6rem;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(300px, 90vw);
+}
+
+.ttt-cell {
+  aspect-ratio: 1;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-weight: 900;
+  cursor: pointer;
+  color: var(--accent2);
+  transition: background var(--transition), border-color var(--transition), transform .1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ttt-cell:hover:not(:disabled) {
+  background: var(--bg-card2);
+  border-color: var(--accent);
+  transform: scale(1.04);
+}
+.ttt-cell:disabled { cursor: default; }
+.ttt-cell.x { color: var(--accent2); }
+.ttt-cell.o { color: #60a5fa; }
+.ttt-cell.win {
+  background: rgba(232,101,12,.15);
+  border-color: var(--accent);
+  animation: pulse-win .4s ease;
+}
+.ttt-cell.o.win {
+  background: rgba(96,165,250,.12);
+  border-color: #60a5fa;
+}
+
+@keyframes pulse-win {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.ttt-reset-btn { align-self: center; }
+
 /* ===== CONTACT ===== */
 .contact-sub {
   color: var(--text-muted);
