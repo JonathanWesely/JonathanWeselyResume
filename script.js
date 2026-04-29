@@ -113,7 +113,7 @@ document.querySelectorAll('.project-video').forEach(video => {
 
 /* ===== SCROLL REVEAL ===== */
 const revealEls = document.querySelectorAll(
-  '.skill-group, .project-card, .stat-card, .contact-item, .about-text, .about-stats, .contact-form, .ttt-wrapper, .timeline-item, .feature-card, .experience-item'
+  '.skill-group, .project-card, .stat-card, .contact-item, .about-text, .about-stats, .contact-form, .timeline-item, .feature-card, .experience-item'
 );
 
 revealEls.forEach(el => el.classList.add('reveal'));
@@ -186,97 +186,11 @@ filterBtns.forEach(btn => {
   });
 });
 
-/* ===== TIC TAC TOE ===== */
-const tttBoard    = document.getElementById('ttt-board');
-const tttStatus   = document.getElementById('ttt-status');
-const tttReset    = document.getElementById('ttt-reset');
-const scoreX      = document.getElementById('score-x');
-const scoreO      = document.getElementById('score-o');
-const scoreDraw   = document.getElementById('score-draw');
-const tttCells    = Array.from(tttBoard.querySelectorAll('.ttt-cell'));
-
-const WINS = [
-  [0,1,2],[3,4,5],[6,7,8], // rows
-  [0,3,6],[1,4,7],[2,5,8], // cols
-  [0,4,8],[2,4,6],          // diags
-];
-
-let tttState, tttCurrent, tttOver, scores;
-scores = { X: 0, O: 0, Draw: 0 };
-
-function tttInit() {
-  tttState   = Array(9).fill(null);
-  tttCurrent = 'X';
-  tttOver    = false;
-  tttCells.forEach(c => {
-    c.textContent = '';
-    c.disabled = false;
-    c.className = 'ttt-cell';
-  });
-  tttStatus.textContent = "Player X's turn";
-  updateScoreHighlight();
-}
-
-function updateScoreHighlight() {
-  document.querySelectorAll('.ttt-score-card').forEach(c => c.classList.remove('active'));
-  if (!tttOver) {
-    const idx = tttCurrent === 'X' ? 0 : 2;
-    document.querySelectorAll('.ttt-score-card')[idx].classList.add('active');
-  }
-}
-
-function checkWinner() {
-  for (const [a, b, c] of WINS) {
-    if (tttState[a] && tttState[a] === tttState[b] && tttState[a] === tttState[c]) {
-      return { winner: tttState[a], line: [a, b, c] };
-    }
-  }
-  if (tttState.every(Boolean)) return { winner: 'Draw', line: [] };
-  return null;
-}
-
-tttCells.forEach(cell => {
-  cell.addEventListener('click', () => {
-    const i = parseInt(cell.dataset.index, 10);
-    if (tttOver || tttState[i]) return;
-
-    tttState[i] = tttCurrent;
-    cell.textContent = tttCurrent;
-    cell.classList.add(tttCurrent.toLowerCase());
-    cell.disabled = true;
-
-    const result = checkWinner();
-    if (result) {
-      tttOver = true;
-      tttCells.forEach(c => c.disabled = true);
-      if (result.winner === 'Draw') {
-        tttStatus.textContent = "It's a draw!";
-        scores.Draw++;
-        scoreDraw.textContent = scores.Draw;
-      } else {
-        result.line.forEach(idx => tttCells[idx].classList.add('win'));
-        tttStatus.textContent = `Player ${result.winner} wins!`;
-        scores[result.winner]++;
-        if (result.winner === 'X') scoreX.textContent = scores.X;
-        else scoreO.textContent = scores.O;
-      }
-      document.querySelectorAll('.ttt-score-card').forEach(c => c.classList.remove('active'));
-    } else {
-      tttCurrent = tttCurrent === 'X' ? 'O' : 'X';
-      tttStatus.textContent = `Player ${tttCurrent}'s turn`;
-      updateScoreHighlight();
-    }
-  });
-});
-
-tttReset.addEventListener('click', tttInit);
-tttInit();
-
 /* ===== CONTACT FORM ===== */
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
-contactForm.addEventListener('submit', e => {
+contactForm.addEventListener('submit', async e => {
   e.preventDefault();
   const name = contactForm.name.value.trim();
   const email = contactForm.email.value.trim();
@@ -291,17 +205,33 @@ contactForm.addEventListener('submit', e => {
     return;
   }
 
-  // Simulate sending (replace with a real endpoint or EmailJS)
   const btn = contactForm.querySelector('button[type="submit"]');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending…';
+  setStatus('', '');
 
-  setTimeout(() => {
-    setStatus('Message sent! I\'ll get back to you soon.', 'success');
-    contactForm.reset();
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      setStatus("Message sent! I'll get back to you soon.", 'success');
+      contactForm.reset();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      const msg = data.errors?.map(err => err.message).join(', ')
+        || 'Something went wrong. Please try again or email me directly.';
+      setStatus(msg, 'error');
+    }
+  } catch {
+    setStatus('Network error. Please check your connection and try again.', 'error');
+  } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-  }, 1200);
+  }
 });
 
 function setStatus(text, type) {
