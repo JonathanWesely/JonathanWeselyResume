@@ -56,10 +56,11 @@ function applyTheme(theme) {
 /* ===== TYPED TEXT ===== */
 const typedEl = document.querySelector('.typed-text');
 const phrases = [
-  'ML / AI Engineer',
-  'Game Developer',
+  'CS & Applied Math Grad',
+  'AI Agent Builder',
+  'Unreal Engine 5 Developer',
   'Physics & Engineering Teacher',
-  'Applied Mathematician',
+  'VEX V5 Robotics Coach',
 ];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -92,9 +93,27 @@ function type() {
 }
 type();
 
+/* ===== PROJECT VIDEO PLACEHOLDERS =====
+   Hide the placeholder once a video successfully loads its source.
+   If the file is missing (404), keep the placeholder visible. */
+document.querySelectorAll('.project-video').forEach(video => {
+  video.addEventListener('loadeddata', () => video.classList.add('loaded'));
+  video.addEventListener('error', () => {
+    video.style.display = 'none';
+  });
+  // Probe: if no <source> resolves, keep placeholder
+  const sources = video.querySelectorAll('source');
+  let anyLoaded = false;
+  sources.forEach(s => {
+    s.addEventListener('error', () => {
+      if (!anyLoaded) video.style.display = 'none';
+    });
+  });
+});
+
 /* ===== SCROLL REVEAL ===== */
 const revealEls = document.querySelectorAll(
-  '.skill-group, .project-card, .stat-card, .contact-item, .about-text, .about-stats, .contact-form, .ttt-wrapper'
+  '.skill-group, .project-card, .stat-card, .contact-item, .about-text, .about-stats, .contact-form, .ttt-wrapper, .timeline-item, .feature-card, .experience-item'
 );
 
 revealEls.forEach(el => el.classList.add('reveal'));
