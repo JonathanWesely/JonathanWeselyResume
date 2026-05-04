@@ -276,6 +276,13 @@ section { padding: 100px 0; }
   color: var(--accent2);
   letter-spacing: -2px;
 }
+.avatar-photo {
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-card2);
+}
 
 .floating-badge {
   position: absolute;
