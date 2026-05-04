@@ -550,11 +550,11 @@ section { padding: 100px 0; }
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   position: relative;
   z-index: 2;
-  background: var(--bg-card2);
+  background: #000;
 }
 .project-media-placeholder {
   position: absolute;
@@ -701,7 +701,13 @@ section { padding: 100px 0; }
   border-color: var(--accent);
   transform: translateY(-4px);
 }
-.feature-card .project-media { margin-bottom: 0; }
+.feature-card .project-media {
+  margin-bottom: 0;
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 240px;
+  background: #000;
+}
 .feature-body { display: flex; flex-direction: column; gap: .6rem; }
 .feature-tag {
   display: inline-block;
