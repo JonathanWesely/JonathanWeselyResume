@@ -93,22 +93,19 @@ function type() {
 }
 type();
 
-/* ===== PROJECT VIDEO PLACEHOLDERS =====
-   Hide the placeholder once a video successfully loads its source.
+/* ===== PROJECT IMAGE PLACEHOLDERS =====
+   Hide the placeholder once an image successfully loads.
    If the file is missing (404), keep the placeholder visible. */
-document.querySelectorAll('.project-video').forEach(video => {
-  video.addEventListener('loadeddata', () => video.classList.add('loaded'));
-  video.addEventListener('error', () => {
-    video.style.display = 'none';
-  });
-  // Probe: if no <source> resolves, keep placeholder
-  const sources = video.querySelectorAll('source');
-  let anyLoaded = false;
-  sources.forEach(s => {
-    s.addEventListener('error', () => {
-      if (!anyLoaded) video.style.display = 'none';
+document.querySelectorAll('.project-image').forEach(img => {
+  const markLoaded = () => img.classList.add('loaded');
+  if (img.complete && img.naturalWidth > 0) {
+    markLoaded();
+  } else {
+    img.addEventListener('load', markLoaded);
+    img.addEventListener('error', () => {
+      img.style.display = 'none';
     });
-  });
+  }
 });
 
 /* ===== SCROLL REVEAL ===== */
