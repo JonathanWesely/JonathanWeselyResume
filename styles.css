@@ -703,9 +703,6 @@ section { padding: 100px 0; }
 }
 .feature-card .project-media {
   margin-bottom: 0;
-  aspect-ratio: auto;
-  flex: 1;
-  min-height: 240px;
   background: #000;
 }
 .feature-body { display: flex; flex-direction: column; gap: .6rem; }
