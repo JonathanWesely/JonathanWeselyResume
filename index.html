@@ -261,71 +261,137 @@
         </div>
         <div class="projects-grid">
 
-          <article class="project-card project-card-featured" data-category="gamedev">
-            <div class="project-media">
-              <img class="project-image" src="media/castle-wars.jpeg" alt="Castle Wars FPS screenshot" />
-              <div class="project-media-placeholder">
-                <i class="fa-solid fa-image"></i>
-                <span>Castle Wars screenshot coming soon — drop <code>media/castle-wars.jpeg</code> here</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <div class="project-header">
-                <i class="fa-solid fa-shield-halved project-icon"></i>
-                <div class="project-links">
-                  <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <!-- SIEGEBOUND — 2x2 gallery card -->
+          <article class="project-card project-card-gallery" data-category="gamedev">
+            <div class="gallery-grid">
+              <div class="gallery-text">
+                <div class="project-header">
+                  <i class="fa-solid fa-chess-rook project-icon"></i>
+                  <div class="project-links">
+                    <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h3>SiegeBound — Real-Time Card Battler in Unreal Engine 5</h3>
+                <p>
+                  A 1-on-1 real-time 3D card battler: each player commands a hero on
+                  the battlefield in third person while playing unit, tower, and spell
+                  cards (footmen, cavalry, watch towers, fog) from a 50-card deck
+                  against a live gold economy, racing to break through the enemy's
+                  castle. The game is my capstone for ELVTR's <em>Multi-Agent AI for
+                  Game Development</em> course and is built by a multi-agent Claude
+                  Code pipeline I designed: agents work a ticket board against a shared
+                  GDD and conventions, generate 3D assets through Meshy and TRELLIS
+                  pipelines, drive the editor through Unreal and Blender MCP servers,
+                  and review playtest footage automatically. Currently in development.
+                </p>
+                <div class="project-tags">
+                  <span>Unreal Engine 5</span><span>Multi-Agent Claude Code</span>
+                  <span>Unreal MCP</span><span>Blender MCP</span><span>Meshy / TRELLIS</span>
                 </div>
               </div>
-              <h3>FPS Castle Attack &amp; Defense — Unreal Engine 5</h3>
-              <p>
-                A 1-on-1 immersive FPS card-strategy game inspired by Clash Royale.
-                Players control a movable character fighting alongside generated
-                armies and defenses, with shifting perspectives and detailed graphics.
-              </p>
-              <div class="project-tags">
-                <span>Unreal Engine 5</span><span>Blender</span><span>C++</span>
-              </div>
+              <a class="gallery-photo" href="media/siegebound-1.jpg" data-caption="Holding the line at the castle gate — footmen, cavalry, and the player's hero knight">
+                <img class="gallery-bg" src="media/siegebound-1.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/siegebound-1.jpg" alt="SiegeBound: melee at the castle gate with footmen, cavalry, and the hero knight" loading="lazy" />
+                <span class="gallery-caption">Holding the line at the castle gate — footmen, cavalry, and the player's hero knight</span>
+              </a>
+              <a class="gallery-photo" href="media/siegebound-2.jpg" data-caption="Pushing across the battlefield toward the enemy castle, with the 6-card hand and gold economy on the HUD">
+                <img class="gallery-bg" src="media/siegebound-2.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/siegebound-2.jpg" alt="SiegeBound: the hero and an archer advancing across the battlefield toward the enemy castle" loading="lazy" />
+                <span class="gallery-caption">Pushing across the battlefield toward the enemy castle, with the 6-card hand and gold economy on the HUD</span>
+              </a>
+              <a class="gallery-photo" href="media/siegebound-3.jpg" data-caption="A Fog card in effect mid-battle, hiding the fight from the defenders">
+                <img class="gallery-bg" src="media/siegebound-3.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/siegebound-3.jpg" alt="SiegeBound: a fog spell covering the battlefield mid-fight" loading="lazy" />
+                <span class="gallery-caption">A Fog card in effect mid-battle, hiding the fight from the defenders</span>
+              </a>
             </div>
           </article>
 
-          <article class="project-card" data-category="mobile">
-            <div class="project-header">
-              <i class="fa-solid fa-golf-ball-tee project-icon"></i>
-              <div class="project-links">
-                <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <!-- GOLF SWING TRACKER — 2x2 gallery card -->
+          <article class="project-card project-card-gallery" data-category="mobile">
+            <div class="gallery-grid">
+              <div class="gallery-text">
+                <div class="project-header">
+                  <i class="fa-solid fa-golf-ball-tee project-icon"></i>
+                  <div class="project-links">
+                    <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h3>AR Golf Swing Analyzer</h3>
+                <p>
+                  An open-source swing tracking system: a ~10&nbsp;g solderless
+                  grip-mounted sensor (Arduino Nicla Sense ME + wide-range IMU)
+                  streams swings over a custom BLE protocol to a Flutter app that
+                  computes club speed, face angle, and club path — validated to
+                  ~0.15% speed error — with an AR heads-up display targeted for
+                  Snap Spectacles. The sensor rides in a 3D-printed, thumbscrew-adjustable
+                  shaft clamp I designed, and the hand-built hardware now pairs with the
+                  app over Bluetooth LE; live swing capture is the next milestone.
+                </p>
+                <div class="project-tags">
+                  <span>Flutter</span><span>Arduino</span><span>BLE</span><span>Sensor Fusion</span><span>3D Printing</span>
+                </div>
               </div>
-            </div>
-            <h3>AR Golf Swing Analyzer</h3>
-            <p>
-              An open-source swing tracking system: a ~10&nbsp;g solderless
-              grip-mounted sensor (Arduino Nicla Sense ME + wide-range IMU)
-              streams swings over a custom BLE protocol to a Flutter app that
-              computes club speed, face angle, and club path — validated to
-              ~0.15% speed error — with an AR heads-up display targeted for
-              Snap Spectacles.
-            </p>
-            <div class="project-tags">
-              <span>Flutter</span><span>Arduino</span><span>BLE</span><span>Sensor Fusion</span>
+              <a class="gallery-photo" href="media/golf-1.jpg" data-caption="Flutter app — live club speed, face angle, and swing-path readout (simulated-sensor mode)">
+                <img class="gallery-bg" src="media/golf-1.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/golf-1.jpg" alt="Golf Swing Tracker app showing club speed, face angle, and swing path" loading="lazy" />
+                <span class="gallery-caption">Flutter app — live club speed, face angle, and swing-path readout (simulated-sensor mode)</span>
+              </a>
+              <a class="gallery-photo" href="media/golf-2.jpg" data-caption="3D-printed shaft clamp for the sensor — four thumbscrews tighten the split collar around the club">
+                <img class="gallery-bg" src="media/golf-2.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/golf-2.jpg" alt="3D-printed white shaft clamp with four black thumbscrews on a table" loading="lazy" />
+                <span class="gallery-caption">3D-printed shaft clamp for the sensor — four thumbscrews tighten the split collar around the club</span>
+              </a>
+              <a class="gallery-photo" href="media/golf-3.jpg" data-caption="The clamp fitted on a club shaft, ready for the sensor bundle">
+                <img class="gallery-bg" src="media/golf-3.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/golf-3.jpg" alt="The 3D-printed clamp mounted on a golf club shaft" loading="lazy" />
+                <span class="gallery-caption">The clamp fitted on a club shaft, ready for the sensor bundle</span>
+              </a>
             </div>
           </article>
 
-          <article class="project-card" data-category="mobile">
-            <div class="project-header">
-              <i class="fa-solid fa-mobile-screen-button project-icon"></i>
-              <div class="project-links">
-                <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <!-- POKEMON STRATEGY APP — 2x2 gallery card -->
+          <article class="project-card project-card-gallery" data-category="mobile">
+            <div class="gallery-grid">
+              <div class="gallery-text">
+                <div class="project-header">
+                  <i class="fa-solid fa-mobile-screen-button project-icon"></i>
+                  <div class="project-links">
+                    <a href="https://github.com/JonathanWesely" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                  </div>
+                </div>
+                <h3>Pokémon Champions Battle Companion</h3>
+                <p>
+                  A real-time battle-intelligence app for <em>Pokémon Champions</em>.
+                  A camera rig clipped to the Switch (or the phone's own camera) feeds the
+                  battle screen to the app: an on-device sprite classifier identifies every
+                  Pokémon in team preview, and in-match OCR reads names and moves to track
+                  confirmed vs. predicted builds. A speed check ranks the field, the battle
+                  view tracks terrain, weather, Trick Room, and turn order, and a
+                  per-regulation team builder with full stat, matchup, ability, and move
+                  cards can import a team straight from the game's team-display screens.
+                  Ships to iPhone through Codemagic cloud builds and TestFlight.
+                </p>
+                <div class="project-tags">
+                  <span>Flutter</span><span>Dart</span><span>On-Device Classifier</span>
+                  <span>OCR</span><span>SQLite</span><span>Supabase</span>
+                </div>
               </div>
-            </div>
-            <h3>Pokémon Champions Battle Companion</h3>
-            <p>
-              A real-time battle-intelligence app for <em>Pokémon Champions</em>:
-              snap a photo of the battle screen and an LLM-based recognizer
-              identifies every Pokémon on the field, while a prediction engine
-              surfaces likely enemy movesets, items, and stat ranges from
-              competitive usage data — with speed-tier comparisons at a glance.
-            </p>
-            <div class="project-tags">
-              <span>Flutter</span><span>SQLite</span><span>LLM Vision</span><span>Dart</span>
+              <a class="gallery-photo" href="media/pokemon-1.jpg" data-caption="Battle view — speed check, field conditions, and predicted vs. confirmed picks for a Reg M-C doubles match">
+                <img class="gallery-bg" src="media/pokemon-1.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/pokemon-1.jpg" alt="Battle tab showing a speed check and an arena view with both teams and Grassy Terrain" loading="lazy" />
+                <span class="gallery-caption">Battle view — speed check, field conditions, and predicted vs. confirmed picks for a Reg M-C doubles match</span>
+              </a>
+              <a class="gallery-photo" href="media/pokemon-2.jpg" data-caption="Saved teams for the current Champions regulation">
+                <img class="gallery-bg" src="media/pokemon-2.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/pokemon-2.jpg" alt="Team list screen with four saved teams" loading="lazy" />
+                <span class="gallery-caption">Saved teams for the current Champions regulation</span>
+              </a>
+              <a class="gallery-photo" href="media/pokemon-3.jpg" data-caption="Pokémon card — Champions base stats, type matchups, abilities, and learnable moves">
+                <img class="gallery-bg" src="media/pokemon-3.jpg" alt="" aria-hidden="true" loading="lazy" />
+                <img class="gallery-img" src="media/pokemon-3.jpg" alt="Charizard detail card with base stats, weaknesses, abilities, and moves" loading="lazy" />
+                <span class="gallery-caption">Pokémon card — Champions base stats, type matchups, abilities, and learnable moves</span>
+              </a>
             </div>
           </article>
 
@@ -665,6 +731,17 @@
         </a>
       </p>
     </footer>
+
+    <!-- LIGHTBOX (project gallery photos) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project photo">
+      <button class="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+      <figure class="lightbox-figure">
+        <img class="lightbox-img" src="" alt="" />
+        <figcaption class="lightbox-caption"></figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
 
     <script src="script.js"></script>
   </body>

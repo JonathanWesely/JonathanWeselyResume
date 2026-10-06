@@ -108,6 +108,58 @@ document.querySelectorAll('.project-image').forEach(img => {
   }
 });
 
+/* ===== PROJECT GALLERY LIGHTBOX ===== */
+const lightbox = document.getElementById('lightbox');
+
+if (lightbox) {
+  const lbImg = lightbox.querySelector('.lightbox-img');
+  const lbCaption = lightbox.querySelector('.lightbox-caption');
+  let group = [];
+  let index = 0;
+
+  function showPhoto(i) {
+    index = (i + group.length) % group.length;
+    const link = group[index];
+    const img = link.querySelector('.gallery-img');
+    lbImg.src = link.href;
+    lbImg.alt = img ? img.alt : '';
+    lbCaption.textContent = link.dataset.caption || '';
+  }
+
+  function openLightbox(link) {
+    const grid = link.closest('.gallery-grid');
+    group = Array.from(grid.querySelectorAll('.gallery-photo'));
+    showPhoto(group.indexOf(link));
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.removeAttribute('src');
+  }
+
+  document.querySelectorAll('.gallery-photo').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      openLightbox(link);
+    });
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); showPhoto(index - 1); });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); showPhoto(index + 1); });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') showPhoto(index - 1);
+    else if (e.key === 'ArrowRight') showPhoto(index + 1);
+  });
+}
+
 /* ===== SCROLL REVEAL ===== */
 const revealEls = document.querySelectorAll(
   '.skill-group, .project-card, .stat-card, .contact-item, .about-text, .about-stats, .contact-form, .timeline-item, .feature-card, .experience-item'
